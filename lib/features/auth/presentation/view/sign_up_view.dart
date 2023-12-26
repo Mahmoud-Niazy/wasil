@@ -63,7 +63,8 @@ class SignUpView extends StatelessWidget {
                         height: 20,
                       ),
                       CustomTextFormField(
-                        title: 'User Name',
+                        label: 'User Name',
+                        hintText: 'Enter User Name',
                         validator: (value) {
                           if (value!.isEmpty) {
                             return 'Enter your user name';
@@ -76,7 +77,9 @@ class SignUpView extends StatelessWidget {
                         height: 10,
                       ),
                       CustomTextFormField(
-                        title: 'Mobile Number',
+                        label: 'Mobile Number',
+                        isPhoneNumber: true,
+                        hintText: 'Enter Mobile Number',
                         validator: (value) {
                           if (value!.isEmpty) {
                             return 'Enter your mobile number';
@@ -90,7 +93,9 @@ class SignUpView extends StatelessWidget {
                         height: 10,
                       ),
                       CustomTextFormField(
-                        title: 'Email',
+                        label: 'Email',
+                        hintText: 'Enter Email',
+                        keyboardType: TextInputType.emailAddress,
                         validator: (value) {
                           if (value!.isEmpty) {
                             return 'Enter your email';
@@ -103,7 +108,10 @@ class SignUpView extends StatelessWidget {
                         height: 10,
                       ),
                       CustomTextFormField(
-                        title: 'Password',
+                        label: 'Password',
+                        hintText: 'Enter Password',
+                        isPassword: true,
+                        isSuffixIconShown: true,
                         validator: (value) {
                           if (value!.isEmpty) {
                             return 'Enter your password';
@@ -116,7 +124,10 @@ class SignUpView extends StatelessWidget {
                         height: 10,
                       ),
                       CustomTextFormField(
-                        title: 'Confirm Password',
+                        label: 'Confirm Password',
+                        isSuffixIconShown: true,
+                        hintText: 'Enter Password Confirmation ',
+                        isPassword: true,
                         validator: (value) {
                           if (value!.isEmpty) {
                             return 'Enter password confirmation';
@@ -132,7 +143,8 @@ class SignUpView extends StatelessWidget {
                         height: 10,
                       ),
                       CustomTextFormField(
-                        title: 'Shop Code / Agency Code if Any',
+                        label: 'Code',
+                        hintText: 'Enter Shop Code / Agency Code if Any',
                         validator: (value) {
                           return null;
                         },

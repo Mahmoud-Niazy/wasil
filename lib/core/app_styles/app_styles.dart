@@ -29,6 +29,13 @@ abstract class AppStyles {
     color: Colors.white,
   );
 
+  static const TextStyle style11 = TextStyle(
+    fontSize: 11,
+    fontWeight: FontWeight.w600,
+    fontFamily: AppConstance.primaryFontFamily,
+    color: AppConstance.primaryAppColor,
+  );
+
   static const TextStyle style13 = TextStyle(
     fontSize: 13,
     fontWeight: FontWeight.w400,
@@ -41,5 +48,12 @@ abstract class AppStyles {
     fontWeight: FontWeight.w400,
     fontFamily: AppConstance.primaryFontFamily,
     color: Colors.white,
+  );
+
+  static const TextStyle style14 = TextStyle(
+    fontSize: 14,
+    fontWeight: FontWeight.w400,
+    fontFamily: AppConstance.primaryFontFamily,
+    color: AppConstance.primaryAppColor,
   );
 }

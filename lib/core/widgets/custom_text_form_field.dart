@@ -1,26 +1,29 @@
 import 'package:flutter/material.dart';
-import 'package:wasil/core/app_constance/app_constance.dart';
 
 import '../../../../../core/app_styles/app_styles.dart';
 import 'custom_icon_button.dart';
 
 //ignore: must_be_immutable
 class CustomTextFormField extends StatefulWidget {
-  final String title;
+  final String hintText;
+  final String label ;
   bool isPassword;
   final bool isSuffixIconShown;
   final TextInputType? keyboardType ;
   final String? Function(String?)? validator ;
   final TextEditingController controller ;
+  final bool isPhoneNumber ;
 
   CustomTextFormField({
     super.key,
-    required this.title,
+    required this.hintText,
     this.isPassword = false,
     this.isSuffixIconShown = false,
     this.keyboardType,
     required this.validator,
     required this.controller,
+    this.isPhoneNumber = false,
+    required this.label,
   });
 
   @override
@@ -39,35 +42,63 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
         borderRadius: BorderRadius.circular(10),
       ),
       padding: const EdgeInsets.symmetric(horizontal: 15,),
-      child: TextFormField(
-        controller: widget.controller,
-        validator: widget.validator,
-        keyboardType: widget.keyboardType ,
-        decoration: InputDecoration(
-          border: InputBorder.none,
-          label: Text(
-              widget.title,
-            style: const TextStyle(
-              color: AppConstance.primaryAppColor,
-            ),
-          ),
-          hintStyle: AppStyles.style18.copyWith(
-            fontSize: 16,
-          ),
-          suffixIcon: widget.isSuffixIconShown == true
-              ? CustomIconButton(
-                  onPressed: () {
-                    setState(() {
-                      widget.isPassword = !widget.isPassword;
-                    });
-                  },
-                  icon: widget.isPassword
-                      ? Icons.remove_red_eye_outlined
-                      : Icons.visibility_off_outlined,
-                )
-              : null,
+      child: Padding(
+        padding: const EdgeInsets.only(
+          top: 5,
         ),
-        obscureText: widget.isPassword,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              widget.label,
+              style: AppStyles.style11,
+            ),
+            Row(
+              children: [
+                if(widget.isPhoneNumber)
+                  const Row(
+                    children: [
+                      Text(
+                        '+962',
+                        style: AppStyles.style14,
+                      ),
+                      SizedBox(
+                        width: 10,
+                      ),
+                    ],
+                  ),
+
+                Expanded(
+                  child: TextFormField(
+                    controller: widget.controller,
+                    validator: widget.validator,
+                    keyboardType: widget.keyboardType ,
+                    decoration: InputDecoration(
+                      border: InputBorder.none,
+                      hintText: widget.hintText,
+                      hintStyle: AppStyles.style18.copyWith(
+                        fontSize: 16,
+                      ),
+                      suffixIcon: widget.isSuffixIconShown == true
+                          ? CustomIconButton(
+                              onPressed: () {
+                                setState(() {
+                                  widget.isPassword = !widget.isPassword;
+                                });
+                              },
+                              icon: widget.isPassword
+                                  ? Icons.remove_red_eye_outlined
+                                  : Icons.visibility_off_outlined,
+                            )
+                          : null,
+                    ),
+                    obscureText: widget.isPassword,
+                  ),
+                ),
+              ],
+            ),
+          ],
+        ),
       ),
     );
   }

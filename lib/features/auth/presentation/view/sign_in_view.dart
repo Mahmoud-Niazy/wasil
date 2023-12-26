@@ -60,7 +60,9 @@ class SignInView extends StatelessWidget {
                         height: 30,
                       ),
                       CustomTextFormField(
-                        title: 'Mobile Number',
+                        label: 'Mobile Number',
+                        isPhoneNumber: true,
+                        hintText: 'Enter Mobile Number',
                         validator: (value) {
                           if (value!.isEmpty) {
                             return 'Enter your mobile phone';
@@ -74,7 +76,8 @@ class SignInView extends StatelessWidget {
                         height: 10,
                       ),
                       CustomTextFormField(
-                        title: 'Password',
+                        label: 'Password',
+                        hintText: 'Enter Your Password',
                         validator: (value) {
                           if (value!.isEmpty) {
                             return 'Enter your password';
